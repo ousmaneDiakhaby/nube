@@ -57,7 +57,7 @@ const Sidebar = ({ fullName, avatar, email }: Props) => {
                   height={24}
                   className={cn(
                     "nav-icon",
-                    pathname === url && "nav-active-icon",
+                    pathname === url && "nav-icon-active",
                   )}
                 />
                 <p className="hidden lg:block">{name}</p>
@@ -72,7 +72,7 @@ const Sidebar = ({ fullName, avatar, email }: Props) => {
         alt="Files"
         width={506}
         height={418}
-        className="w-full"
+        className="w-full hover:scale-105 hover:rotate-2 transition-all"
       />
 
       <div className="sidebar-user-info">
