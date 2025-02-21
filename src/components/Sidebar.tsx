@@ -26,7 +26,7 @@ const Sidebar = ({ fullName, avatar, email }: Props) => {
             height={82}
             className="h-auto"
           />
-          <span className="text-brand text-4xl font-semibold md:hidden lg:block">
+          <span className="text-brand text-4xl font-semibold sm:hidden md:hidden lg:block">
             Nube
           </span>
         </div>
