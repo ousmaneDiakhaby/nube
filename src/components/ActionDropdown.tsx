@@ -164,7 +164,7 @@ const ActionDropdown = ({ file }: { file: Models.Document }) => {
                 setAction(actionItem);
 
                 if (
-                  ["rename", "share", "delete", "delete"].includes(
+                  ["rename", "details", "share", "delete"].includes(
                     actionItem.value,
                   )
                 ) {
