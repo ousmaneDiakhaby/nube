@@ -1,15 +1,16 @@
 "use client";
+
 import React, { useCallback, useState } from "react";
+
 import { useDropzone } from "react-dropzone";
 import { Button } from "@/components/ui/button";
+import { cn, convertFileToUrl, getFileType } from "@/lib/utils";
 import Image from "next/image";
-import { cn, convertFileToUrl } from "@/lib/utils";
-import { getFileType } from "@/lib/utils";
 import Thumbnail from "@/components/Thumbnail";
 import { MAX_FILE_SIZE } from "@/constants";
 import { useToast } from "@/hooks/use-toast";
-import { usePathname } from "next/navigation";
 import { uploadFile } from "@/lib/actions/file.actions";
+import { usePathname } from "next/navigation";
 
 interface Props {
   ownerId: string;
@@ -21,6 +22,7 @@ const FileUploader = ({ ownerId, accountId, className }: Props) => {
   const path = usePathname();
   const { toast } = useToast();
   const [files, setFiles] = useState<File[]>([]);
+
   const onDrop = useCallback(
     async (acceptedFiles: File[]) => {
       setFiles(acceptedFiles);
@@ -57,6 +59,7 @@ const FileUploader = ({ ownerId, accountId, className }: Props) => {
     },
     [ownerId, accountId, path],
   );
+
   const { getRootProps, getInputProps } = useDropzone({ onDrop });
 
   const handleRemoveFile = (
@@ -68,7 +71,7 @@ const FileUploader = ({ ownerId, accountId, className }: Props) => {
   };
 
   return (
-    <div {...getRootProps()} className="dropzone">
+    <div {...getRootProps()} className="cursor-pointer">
       <input {...getInputProps()} />
       <Button type="button" className={cn("uploader-button", className)}>
         <Image
@@ -102,20 +105,18 @@ const FileUploader = ({ ownerId, accountId, className }: Props) => {
                     {file.name}
                     <Image
                       src="/assets/icons/file-loader.gif"
-                      alt="loading"
                       width={80}
                       height={26}
-                      className="ml-2 animate-spin"
+                      alt="Loader"
                     />
                   </div>
                 </div>
 
                 <Image
                   src="/assets/icons/remove.svg"
-                  alt="remove"
                   width={24}
                   height={24}
-                  className="remove-icon"
+                  alt="Remove"
                   onClick={(e) => handleRemoveFile(e, file.name)}
                 />
               </li>
