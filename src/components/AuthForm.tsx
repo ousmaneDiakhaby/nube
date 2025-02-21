@@ -123,7 +123,7 @@ const AuthForm = ({ type }: { type: FormType }) => {
 
             {isLoading && (
               <Image
-                src="/assets/icons/loading.svg"
+                src="/assets/icons/loader.svg"
                 alt="loading"
                 width={24}
                 height={24}
